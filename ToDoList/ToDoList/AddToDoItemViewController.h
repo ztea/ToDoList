@@ -10,4 +10,8 @@
 
 @interface AddToDoItemViewController : UIViewController
 
+@property NSMutableArray *toDoListItems;
+@property (weak, nonatomic) IBOutlet UITextField *AddItem;
+@property ToDoItem *toDoItem;
+
 @end

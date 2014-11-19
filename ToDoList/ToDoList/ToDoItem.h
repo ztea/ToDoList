@@ -10,4 +10,7 @@
 
 @interface ToDoItem : NSObject
 
+@property NSString *name;
+@property BOOL completed;
+
 @end

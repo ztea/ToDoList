@@ -24,6 +24,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString *text = self.toDoItemField.text;
+    ToDoItem *item1 = [[ToDoItem alloc] init];
+    item1.name = text;
+    
+    self.toDoItem = item1;
+}
+
 /*
 #pragma mark - Navigation
 

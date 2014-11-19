@@ -1,3 +1,5 @@
+
+    
 //
 //  ToDoListViewController.m
 //  ToDoList
@@ -7,6 +9,7 @@
 //
 
 #import "ToDoListViewController.h"
+#import "ToDoItem.h"
 
 @interface ToDoListViewController ()
 
@@ -16,6 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.toDoListItems = [[NSMutableArray alloc] init];
+    
+    ToDoItem *item1 = [[ToDoItem alloc] init];
+    item1.name = @"BuyGroceries";
+    
+    ToDoItem *item2 = [[ToDoItem alloc] init];
+    item2.name = @"Feed Baby";
+    
+    [self.toDoListItems addObject:item1];
+    [self.toDoListItems addObject:item2];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -32,15 +47,15 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 0;
+    return [self.toDoListItems count];
 }
 
 -(IBAction)unwindToSegue:(UIStoryboardSegue*)segue
@@ -49,15 +64,18 @@
 }
 
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ToDoCell" forIndexPath:indexPath];
+    
+    
+    cell.textLabel.text = [[self.toDoListItems objectAtIndex:indexPath.row] name];
     // Configure the cell...
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
